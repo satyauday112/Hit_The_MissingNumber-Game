@@ -3,7 +3,9 @@
 #include<time.h>
 #include<unistd.h>
 #include<conio.h>
-
+void clrscr(){
+    system("@cls||clear");
+}
 int timer();
 int randomnum();
 int form();
@@ -46,7 +48,7 @@ int form(int seq0,int lvl0,int elm0[lvl0][lvl0]){
     }
 }
 int timer(){
-        return rand()%4;
+        return rand()%5;
 }
 int randomnum(){
     int rdnum;
@@ -79,6 +81,7 @@ int game(int lvl){
             opt=opt-48;
             printf("%d\n",opt);
         }
+    clrscr();
         if(opt==seq){
             if(lvl<=10){
                 printf("You Won\n");
@@ -91,7 +94,7 @@ int game(int lvl){
             }
         }
         else{
-            printf("\nTry Again\n\n");
+            printf("Time Out or Wrong Entry\nTry Again\n\n");
              game(lvl);
         }
 }
