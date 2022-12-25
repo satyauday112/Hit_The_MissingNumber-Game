@@ -48,7 +48,7 @@ int form(int seq0,int lvl0,int elm0[lvl0][lvl0]){
     }
 }
 int timer(){
-        return rand()%5;
+        return rand()%3;
 }
 int randomnum(){
     int rdnum;
@@ -56,12 +56,13 @@ int randomnum(){
     if(rdnum==0){
         randomnum();
     }
-    else{
-        return rdnum;
-    }
+    return rdnum;
 }
 int game(int lvl){
     int i,j,opt=0,seq=0,elm_arr[lvl][lvl];
+    while(kbhit()==1) {
+        getch();
+    }
         if(lvl>3){
             elm_arr[lvl][lvl];
             for(i=0;i<=lvl;i++){
@@ -77,24 +78,26 @@ int game(int lvl){
         printf("Enter Number: ");
         sleep(timer());
         if(kbhit()==1){
-            opt=getch();
-            opt=opt-48;
-            printf("%d\n",opt);
-        }
+                opt=getch();
+                opt=opt-48;
+                printf("%d\n",opt);
+            }
     clrscr();
+    printf("You are in Level-%d\n\n",lvl);
         if(opt==seq){
-            if(lvl<=10){
+            if(lvl<10){
                 printf("You Won\n");
-                printf("You are in Level-%d\n",lvl+1);
                 game(lvl+1);
             }
             else{
+                clrscr();
                 printf("You have cleared all levels\nThanks for Playing!");
+                getch();
                 return 0;
             }
         }
         else{
-            printf("Time Out or Wrong Entry\nTry Again\n\n");
+            printf("Time Out or Wrong Entry\nTry Again\n");
              game(lvl);
         }
 }
